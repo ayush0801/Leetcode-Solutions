@@ -1,15 +1,18 @@
 class Solution {
 public:
     bool winnerOfGame(string colors) {
-        int alice = 0, bob = 0;
+        int n = colors.size();
+        if(n<3) return false;
         
-        for (int i = 1; i < colors.size() - 1; i++) {
-            if (colors[i - 1] == colors[i] && colors[i] == colors[i + 1]) {
-                if (colors[i] == 'A')   alice++;
-                else    bob++;
+        int bob = 0;
+        int alice = 0;
+        for(int i=2; i<colors.size(); i++){
+            if(colors[i]==colors[i-1] && colors[i]==colors[i-2]){
+                if(colors[i]=='A')  alice++;
+                else bob++;
             }
         }
-        
-        return alice - bob >= 1;
+        cout<<alice<<" "<<bob<<endl;
+        return alice>=bob+1;
     }
 };
