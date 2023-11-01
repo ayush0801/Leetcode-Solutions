@@ -22,30 +22,17 @@ public:
         dfs(root->left);
     }
     vector<int> findMode(TreeNode* root) {
-        // vector<pair<int,int>> freq;
         vector<int> ans;
         dfs(root);
-        
-        // for(auto x: hash){
-        //     auto p = make_pair(x.second, x.first);
-        //     freq.push_back(p);
-        // }
-        
-        // sort(freq.rbegin(), freq.rend());
+
         int mx = 0;
         for (const auto& pair : hash) {
             mx = max(mx, pair.second);
         }
-        for (auto pair : hash) {
-            if (pair.second == mx) {
-                ans.push_back(pair.first);
-            }
-        }
         
-        // for(int i=0; i<freq.size(); i++){
-        //     if(freq[i].first==mx)   ans.push_back(freq[i].second);
-        //     else break;
-        // }
+        for (auto pair : hash) {
+            if (pair.second == mx)  ans.push_back(pair.first);
+        }
         
         return ans;
     }
