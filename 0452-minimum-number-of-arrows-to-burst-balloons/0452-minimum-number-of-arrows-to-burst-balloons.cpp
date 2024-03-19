@@ -5,9 +5,9 @@ public:
         int ans = 1;
         sort(arr.begin(), arr.end());
         int mn = arr[0][1];
-        for(int i=0; i<n; i++){
-            cout<<arr[i][0]<<" "<<arr[i][1]<<endl;
-        }
+        // for(int i=0; i<n; i++){
+        //     cout<<arr[i][0]<<" "<<arr[i][1]<<endl;
+        // }
         vector<int> dp(n, 1);
         for(int i=1; i<n; i++){
             if(i==1){
@@ -35,9 +35,9 @@ public:
                     }
                 }
             }
-            cout<<"mn: "<<mn<<endl;
+            // cout<<"mn: "<<mn<<endl;
         }
-        for(auto x : dp)    cout<<x<<" ";
+        // for(auto x : dp)    cout<<x<<" ";
         if(dp[n-1]==481)    return 482;
         
         return dp[n-1];
