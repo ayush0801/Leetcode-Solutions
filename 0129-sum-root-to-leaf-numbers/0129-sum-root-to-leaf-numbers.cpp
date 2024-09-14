@@ -11,14 +11,18 @@
  */
 class Solution {
 public:
-    int makeNum(TreeNode* root, int temp){
-        if(!root)   return 0;
-        temp = (temp*10) + root->val;
-        if(!root->left && !root->right)
-            return temp;
-        return makeNum(root->left, temp) + makeNum(root->right, temp);
+    int ans = 0;
+    void dfs(TreeNode* root){
+        if(!root)   return;
+        if(!root->left && !root->right) ans += root->val;
+        if(root->left)  root->left->val = ((root->val)*10) + (root->left->val);
+        dfs(root->left);
+        if(root->right) root->right->val = ((root->val)*10) + (root->right->val);
+        dfs(root->right);
     }
     int sumNumbers(TreeNode* root) {
-        return makeNum(root, 0);
+        if(!root)   return 0;
+        dfs(root);
+        return ans;
     }
 };
